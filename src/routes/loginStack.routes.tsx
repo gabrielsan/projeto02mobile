@@ -1,15 +1,17 @@
-import React from 'react'
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import {Welcome, GoodBye, Map} from '../pages'
+import {Home, Details, Map} from '../pages';
+import Login from '../pages/Login';
 
 const Stack = createStackNavigator();
 
 export default function App() {
+ 
   return (
       <Stack.Navigator>
-        
-        <Stack.Screen name="Welcome" component={Welcome} />
-        <Stack.Screen name="GoodBye" component={GoodBye} />
+
+        <Stack.Screen name="Login" component={Login} />
+
       </Stack.Navigator>
   );
 }

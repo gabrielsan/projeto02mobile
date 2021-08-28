@@ -5,13 +5,29 @@ import { TextInput } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Details from './Details';
 import { ImageBackground } from 'react-native';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableOpacity } from 'react-native';
+import Welcome from './Welcome';
+import Map from './Map';
+import Login from './Login';
+import Sobre from './Sobre';
 
 export default function Home(){
     const navigation = useNavigation();
     function handleDetails(){
       navigation.navigate("Details"); 
     }
+    function handleSobre(){
+        navigation.navigate("Sobre"); 
+    }
+    function handleCad(){
+        navigation.navigate("Welcome"); 
+    }
+    function handleLogin(){
+        navigation.navigate("Login"); 
+    }
+
+
+
     return(
         <Container>
           
@@ -24,9 +40,19 @@ export default function Home(){
                >
 
             <View style={{justifyContent:"space-between", flexDirection:"row"}}>
+
+                <TouchableOpacity onPress={handleLogin}> 
                 <Text style={{color:"black"}}>Fazer Login</Text>
-                <Text>                                        </Text>
-                <Text style={{color:"black"}}>Sobre</Text>
+                </TouchableOpacity>
+              
+
+                <Text>                                       </Text>
+
+                <TouchableOpacity onPress={handleSobre} > 
+                 <Text style={{color:"black"}}>Sobre</Text>
+                 </TouchableOpacity>
+                
+
             </View>
 
             
@@ -68,8 +94,10 @@ export default function Home(){
        />
      
 
-           <Buttom>
+           <Buttom >
+           <TouchableOpacity  onPress={handleCad }> 
                <Text>Criar conta</Text>
+               </TouchableOpacity> 
             </Buttom>
 
             <Text></Text>

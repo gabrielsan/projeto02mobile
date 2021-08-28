@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useEffect }from 'react';
 import { BackHandler } from 'react-native';
 import {  Buttom, Container , Text  } from '../styles/Container';
 import { Style } from 'util';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 import { withTheme } from 'styled-components';
+import { createStackNavigator } from '@react-navigation/stack';
+//import { Map} from '../pages';
+import {useNavigation} from '@react-navigation/native';
+import Map from './Map';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 
 export default function Details(){
+    const navigation = useNavigation();
+    function handleMap(){
+      navigation.navigate("Map"); 
+    }
+  
     return(
        
         <>
@@ -16,16 +26,27 @@ export default function Details(){
         <Text>Header falso</Text>
         <Image source={require('../../assets/sanchat2.png')} style={{marginVertical:-5, marginLeft:250}}/>
         </View>
-  
-   <Buttom style={{ margin:7, marginBottom:-3,  marginRight:250, marginVertical:480, backgroundColor:"red"}} >
+
+
+         <TouchableOpacity onPress={handleMap} style={{backgroundColor:"#641DA3"}}> 
+                 <Text style={{color:"white", marginLeft:140}}>Ver no Mapa</Text>
+         </TouchableOpacity>
+       
+
+       
+       <Buttom style={{ margin:7, marginRight:250, marginVertical:441, backgroundColor:"red", marginTop:458}} >
                <Text>Denunciar</Text>
             </Buttom>
-            <Buttom style={{ margin:7, marginRight:250, height:78}}>
+            <Text></Text>
+            <Buttom style={{ margin:7, marginRight:250, height:78, marginVertical:-35}}>
                <Text>Encerrar</Text>
             </Buttom>
+
+          
+
             
             
-            <View style={{marginVertical:-720, marginLeft:-55}}> 
+            <View style={{marginVertical:-719, marginLeft:-55}}> 
             <SafeAreaView > 
         <TextInput 
         style={{   
@@ -41,6 +62,9 @@ export default function Details(){
         
        />
         </SafeAreaView>
+       
+
+
      
         </View>
         
