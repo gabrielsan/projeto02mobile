@@ -59,11 +59,11 @@ export default function Map() {
   return (
     <View style={styles.container}>
       {!region && <Text style={styles.paragraph}>{text}</Text>}
-      {region &&
+      {region && ( 
       <MapView style={styles.map}  region={region}> 
       {marker && marker.map((item) => <Marker coordinate={item} />)}
       </MapView>
-         }
+      )}
     </View>
   );
 }
