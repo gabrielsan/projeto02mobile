@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MapView, {Region, Marker} from 'react-native-maps';
 import {  Text, View, StyleSheet, Dimensions } from 'react-native';
 import * as Location from 'expo-location';
+import getLastKnownPositionAsync  from 'expo-location';
 
 
 export default function Map() {
@@ -18,7 +19,7 @@ export default function Map() {
         return;
       }
 
-      let location = await Location.getCurrentPositionAsync({});
+      let location = await Location.getLastKnownPositionAsync({});
       setLocation(location);
       setRegion({
         // latitude: location.coords.latitude,
@@ -30,24 +31,30 @@ export default function Map() {
         latitudeDelta: 0.05,
         longitudeDelta: 0.05,
       });
+    
+      if(location){
       setMarker([
         {
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,
           latitudeDelta: 0.05,
           longitudeDelta: 0.05,
-        },
+         },
         //localização do cefet marcada. Se quiser retirar basta apagar da linha 41-46
         {
           latitude: -21.5492778,
           longitude: -45.4214182,
           latitudeDelta: 0.05,
           longitudeDelta: 0.05,
+          
         },
+
       ]);
+    }
     };
     handleLocation();
   }, []);
+
 
   let text = 'Waiting..';
   if (errorMsg) {
