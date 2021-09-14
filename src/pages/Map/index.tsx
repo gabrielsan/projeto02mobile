@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MapView, {Region, Marker} from 'react-native-maps';
 import {  Text, View, StyleSheet, Dimensions } from 'react-native';
 import * as Location from 'expo-location';
-import getLastKnownPositionAsync  from 'expo-location';
+import { getLastKnownPositionAsync } from 'expo-location';
 
 
 export default function Map() {
@@ -50,11 +50,11 @@ export default function Map() {
         },
 
       ]);
-    }
+      }
     };
     handleLocation();
   }, []);
-
+  
 
   let text = 'Waiting..';
   if (errorMsg) {
@@ -68,7 +68,7 @@ export default function Map() {
       {!region && <Text style={styles.paragraph}>{text}</Text>}
       {region && ( 
       <MapView style={styles.map}  region={region}> 
-      {marker && marker.map((item) => <Marker coordinate={item} />)}
+      {marker && marker.map((item) => <Marker coordinate={item} key={item.latitude} />)}
       </MapView>
       )}
     </View>
