@@ -56,7 +56,7 @@ export default function Map() {
   }, []);
   
 
-  let text = 'Waiting..';
+  let text = 'Waiting...';
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
